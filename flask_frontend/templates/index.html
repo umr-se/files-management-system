@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Management System</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container mt-4">
+        <h2>File Management System</h2>
+
+        <!-- Flash messages for status -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="alert alert-info">
+                    {% for category, message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <!-- Upload Form -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5>Upload a File</h5>
+                <form action="{{ url_for('upload_file') }}" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <input type="file" name="file" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Upload File</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Delete Form -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5>Delete a File</h5>
+                <form action="{{ url_for('delete_file') }}" method="post">
+                    <div class="form-group">
+                        <label for="file_id">File ID:</label>
+                        <input type="text" name="file_id" class="form-control" placeholder="Enter File ID" required>
+                    </div>
+                    <button type="submit" class="btn btn-danger">Delete File</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Update Form -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5>Update a File</h5>
+                <form action="{{ url_for('update_file') }}" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="file_id">File ID:</label>
+                        <input type="text" name="file_id" class="form-control" placeholder="Enter File ID" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="file" name="file" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-warning">Update File</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Retrieve Form -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5>Retrieve a File</h5>
+                <form action="{{ url_for('retrieve_file') }}" method="post">
+                    <div class="form-group">
+                        <label for="file_id">File ID (optional):</label>
+                        <input type="text" name="file_id" class="form-control" placeholder="Enter File ID">
+                    </div>
+                    <div class="form-group">
+                        <label for="filename">Filename (optional):</label>
+                        <input type="text" name="filename" class="form-control" placeholder="Enter Filename">
+                    </div>
+                    <button type="submit" class="btn btn-success">Retrieve File</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
