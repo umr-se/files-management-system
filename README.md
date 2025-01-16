@@ -26,7 +26,7 @@ This project is a File Management System that allows users to upload, delete, up
 ### Setup and Installation
 1. Clone this repository:
    ```bash
-   git clone https://github.com/umr-se/files-management-system.git
+   git clone https://github.com/umr-se/files-management-system
 
 
 ![FMS](https://github.com/user-attachments/assets/987ba1be-d46f-4488-972c-dee0751d649a)
