@@ -7,7 +7,7 @@ app = FastAPI()
 connection = mysql.connector.connect(
     host="localhost",  # Replace with your MySQL server host
     user="root",  # Replace with your MySQL username
-    password="123456789",  # Replace with your MySQL password
+    password="password",  # Replace with your MySQL password
     database="FileStorageDB"  # Use the correct database
 )
 
